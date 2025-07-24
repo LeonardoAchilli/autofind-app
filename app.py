@@ -20,7 +20,7 @@ st.write("")  # Spazio
 col1, col2 = st.columns([1, 1])
 
 with col1:
-    st.image("file multimediali.jpg",
+    st.image("File multimediali.jpg",
              use_container_width=True, 
              caption="La tua prossima auto ti sta aspettando")
 
