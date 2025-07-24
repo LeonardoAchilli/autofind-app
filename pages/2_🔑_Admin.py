@@ -1,6 +1,3 @@
-2_🔑_Admin.py (Pagina Admin)
-L'area riservata per visualizzare e gestire le richieste.
-
 import streamlit as st
 import pandas as pd
 from core.database import get_all_requests, update_request_status
@@ -12,7 +9,7 @@ st.title("🔑 Area Amministrativa")
 
 # Controlla la password prima di mostrare qualsiasi contenuto
 if not check_password():
-    st.stop() # Ferma l'esecuzione se la password non è corretta
+    st.stop()  # Ferma l'esecuzione se la password non è corretta
 
 st.success("Accesso effettuato con successo.")
 st.markdown("### Storico Richieste Clienti")
@@ -50,8 +47,9 @@ else:
     if st.button("Aggiorna Stato"):
         if request_id_to_update and new_status:
             if update_request_status(request_id_to_update, new_status):
-                st.success(f"Stato della richiesta #{request_id_to_update} aggiornato a '{new_status}'.")
-                st.rerun() # Ricarica la pagina per mostrare i dati aggiornati
+                # CORREZIONE: Modificata la f-string per evitare l'uso di '#'
+                st.success(f"Stato della richiesta ID {request_id_to_update} aggiornato a '{new_status}'.")
+                st.rerun()  # Ricarica la pagina per mostrare i dati aggiornati
             else:
                 st.error("Errore durante l'aggiornamento.")
         else:
