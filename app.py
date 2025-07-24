@@ -1,27 +1,44 @@
 import streamlit as st
+from core.database import init_db
 
-# Imposta la configurazione della pagina.
-# Questa configurazione è globale e viene applicata a tutte le pagine dell'app.
+# Inizializza il database alla prima esecuzione
+init_db()
+
+# Configurazione della pagina
 st.set_page_config(
-    page_title="AutoFind",
-    page_icon="🚗",
-    layout="wide",
-    initial_sidebar_state="expanded"
+    page_title="AutoFind - Trova la tua auto",
+    page_icon="🔎",
+    layout="wide"
 )
 
-# Questo file principale può essere utilizzato per elementi comuni
-# come un titolo nella sidebar o un footer.
-st.sidebar.title("Navigazione")
-st.sidebar.success("Seleziona una pagina qui sopra.")
+# --- Contenuto della Pagina ---
+st.title("Benvenuto in AutoFind 🔎")
+st.markdown("### Il servizio che trova l'auto dei tuoi sogni per te.")
 
-# Aggiungiamo un po' di stile per migliorare l'aspetto
-st.markdown("""
-<style>
-   .st-emotion-cache-16txtl3 {
-        padding-top: 2rem;
-    }
-   .st-emotion-cache-1y4p8pa {
-        padding-top: 2rem;
-    }
-</style>
-""", unsafe_allow_html=True)
+st.write("")  # Spazio
+
+col1, col2 = st.columns([1, 1])
+
+with col1:
+    st.image("https://placehold.co/600x400/000000/FFFFFF?text=Immagine+di+un'auto", 
+             use_column_width=True, 
+             caption="La tua prossima auto ti sta aspettando")
+
+with col2:
+    st.write(
+        """
+        **Sei stanco di passare ore sui siti di annunci senza trovare l'auto giusta?**
+        
+        AutoFind semplifica il processo. Dimentica lo stress della ricerca: dicci cosa cerchi e noi la troveremo per te.
+        
+        #### Come funziona?
+        1. **Vai alla pagina "Cerca Auto"**: Usa il menu a sinistra per navigare.
+        2. **Compila il modulo**: Inserisci i dettagli dell'auto che desideri (marca, modello, budget, etc.).
+        3. **Invia la tua richiesta**: Il nostro team si metterà subito al lavoro.
+        4. **Rilassati**: Ti contatteremo noi non appena avremo trovato le opzioni migliori che corrispondono ai tuoi criteri.
+        
+        **Inizia ora! Clicca su `🚗 Cerca Auto` nel menu a sinistra.**
+        """
+    )
+
+st.info("Sei un amministratore? Accedi alla tua area riservata dal menu `🔑 Admin`.")
