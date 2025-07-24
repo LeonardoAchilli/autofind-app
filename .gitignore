@@ -1,0 +1,30 @@
+# Streamlit
+.streamlit/secrets.toml
+
+# Database
+data/*.db
+data/*.sqlite3
+
+# File di sistema
+__pycache__/
+*.pyc
+.DS_Store
+
+# Python
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
